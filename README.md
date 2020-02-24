@@ -12,6 +12,7 @@ wordpressからREST APIを受け取りReactでSPAにする
 
 - master
   - 現在の公開されているブランチ
+  - masterに直接コミットしない
 - develop/プロジェクト番号
   - masterから分岐
   - 次回リリースの開発用
