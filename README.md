@@ -1,0 +1,2 @@
+# portfolio_spa
+wordpressからREST APIを受け取りReactでSPAにする
