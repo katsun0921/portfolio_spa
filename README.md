@@ -25,6 +25,6 @@ wordpressからREST APIを受け取りReactでSPAにする
   - masterから分岐
   - 現在の公開のバグフィックス
 
-（※）プロジェクト番号は「[https://github.com/users/アカウント名/projects/1]()」の末尾にある番号この場合「1」
+（※）プロジェクト番号は「<https://github.com/users/アカウント名/projects/1」の末尾にある番号この場合「1」>
 
 （※）column-番号の番号はCopy column linkでコピーされた末尾の番号
