@@ -1,7 +1,7 @@
 {
   "name": "portfolio-ks",
   "private": true,
-  "description": "view portfolio-ks with wordpress-api",
+  "description": "View portfolio-ks with wordpress-api",
   "version": "1.0.0",
   "author": "katsumasa-sato",
   "dependencies": {
@@ -60,6 +60,9 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,json,md}": "prettier --write"
+    "*.{js,jsx,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
