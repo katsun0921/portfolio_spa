@@ -1,5 +1,5 @@
 {
-  "name": "portfolio-ks",
+  "name": "@portfolio-ks/spa",
   "private": true,
   "description": "View portfolio-ks with wordpress-api",
   "version": "1.0.0",
