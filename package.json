@@ -7,17 +7,17 @@
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.7",
     "bluebird": "^3.7.2",
-    "gatsby": "^2.19.7",
+    "gatsby": "^2.20.3",
     "gatsby-image": "^2.2.41",
-    "gatsby-plugin-manifest": "^2.2.39",
+    "gatsby-plugin-manifest": "^2.3.2",
     "gatsby-plugin-offline": "^3.0.32",
     "gatsby-plugin-react-helmet": "^3.1.21",
-    "gatsby-plugin-sharp": "^2.4.5",
+    "gatsby-plugin-sharp": "^2.5.2",
     "gatsby-plugin-styled-components": "^3.1.19",
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-source-wordpress": "^3.1.62",
     "gatsby-transformer-json": "^2.2.26",
-    "gatsby-transformer-sharp": "^2.3.14",
+    "gatsby-transformer-sharp": "^2.4.2",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -25,23 +25,32 @@
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
+    "concurrently": "^5.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-jquery": "^1.5.1",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
+    "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
-    "pretty-quick": "^2.0.1"
+    "pretty-quick": "^2.0.1",
+    "typescript": "^3.8.3"
   },
   "keywords": [
     "gatsby"
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "tsc",
+    "gatsby:build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "dev": "concurrently -k -n COMPILER,NODEMON -c yellow,blue \"tsc -w\" \"nodemon -w dist -q dist/index.js\""
   },
   "repository": {
     "type": "git",
@@ -60,7 +69,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,json,md}": [
+    "*.{js,jsx,ts,tsx,json,md}": [
       "prettier --write",
       "git add"
     ]
