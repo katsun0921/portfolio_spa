@@ -29,6 +29,15 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
+        allWordpressSiteMetadata {
+          edges {
+            node {
+              description
+              name
+            }
+          }
+        }
+      {
         allWordpressPage {
           edges {
             node {
@@ -60,7 +69,11 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Access query results via object destructuring
-  const { allWordpressPage, allWordpressPost } = result.data
+  const {
+    allWordpressSiteMetadata,
+    allWordpressPage,
+    allWordpressPost,
+  } = result.data
 
   // Create Page pages.
   const pageTemplate = path.resolve(`./src/templates/page.tsx`)
@@ -102,13 +115,7 @@ exports.createPages = async ({ graphql, actions }) => {
 }
 
 // importパスを絶対パスへ変更
-exports.onCreateWebpackConfig = ({
-  stage,
-  rules,
-  loaders,
-  plugins,
-  actions,
-}) => {
+exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {

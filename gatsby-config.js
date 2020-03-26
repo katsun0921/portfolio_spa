@@ -2,7 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `portfolio-ks.info with Gatsby Default Starter from Wordpress`,
     description: `Wordpress wp-jsonからapiを取得`,
-    author: `@gatsbyjs`,
+    author: `katsumasa-sato`,
+    lang: `ja`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -13,8 +14,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -35,7 +34,7 @@ module.exports = {
          * The base URL of the WordPress site without the trailingslash and the protocol. This is required.
          * Example : 'demo.wp-api.org' or 'www.example-site.com'
          */
-        baseUrl: 'portfolio-ks.local/',
+        baseUrl: 'portfolio-ks.info',
         // The protocol. This can be http or https.
         protocol: 'https',
         // The rest api route prefix that your WordPress site is using.
