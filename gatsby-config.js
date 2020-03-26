@@ -2,7 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `portfolio-ks.info with Gatsby Default Starter from Wordpress`,
     description: `Wordpress wp-jsonからapiを取得`,
-    author: `@gatsbyjs`,
+    author: `katsumasa-sato`,
+    lang: `ja`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
