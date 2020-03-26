@@ -45,11 +45,10 @@
   "scripts": {
     "build": "tsc",
     "gatsby:build": "gatsby build",
-    "develop": "gatsby develop",
+    "gatsby:dev": "gatsby develop",
+    "gatsby:serve": "gatsby serve",
+    "gatsby:clean": "gatsby clean",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
     "dev": "concurrently -k -n COMPILER,NODEMON -c yellow,blue \"tsc -w\" \"nodemon -w dist -q dist/index.js\""
   },
   "repository": {
