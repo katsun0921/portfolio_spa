@@ -102,13 +102,7 @@ exports.createPages = async ({ graphql, actions }) => {
 }
 
 // importパスを絶対パスへ変更
-exports.onCreateWebpackConfig = ({
-  stage,
-  rules,
-  loaders,
-  plugins,
-  actions,
-}) => {
+exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
