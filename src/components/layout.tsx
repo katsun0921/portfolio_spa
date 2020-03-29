@@ -15,16 +15,6 @@ interface Prop {
 }
 
 const Layout = ({ children }: Prop) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <>
       <GlobalStyle />
