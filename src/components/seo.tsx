@@ -53,8 +53,8 @@ function SEO({ meta, title }: Prop) {
       htmlAttributes={{
         lang: `${site.siteMetadata.lang}`,
       }}
-      title={title}
-      titleTemplate={`%s | ${metaTitle}`}
+      title={title ? title : metaTitle}
+      titleTemplate={title ? `%s | ${metaTitle}` : title}
       meta={[
         {
           name: `description`,
