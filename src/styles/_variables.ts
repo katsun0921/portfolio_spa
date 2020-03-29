@@ -1,12 +1,14 @@
-module.exports = {
+type ColorProp = { [key: string]: string }
+
+export const VAR_COLOR: ColorProp = {
   // colors
-  $colorBody: '#727272',
-  $colorMenu: '#f1f3f6',
-  $colorPageLink: '#727272',
-  $colorMenuCaption: '#4dd133',
-  $colorBlack: '#000',
-  $colorGrayDark: '#333',
-  $colorGrayDarkLittle: '#666',
-  $colorGrayBright: '#ddd',
-  $colorWhite: '#fff',
+  body: '#727272',
+  menu: '#f1f3f6',
+  pageLink: '#727272',
+  menuCaption: '#4dd133',
+  black: '#000',
+  grayDark: '#333',
+  grayDarkLittle: '#666',
+  grayBright: '#ddd',
+  white: '#fff',
 }

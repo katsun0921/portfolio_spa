@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-const StyleVar = require('styles/_variables')
+import { VAR_COLOR } from 'styles/_variables'
 
 const GlobalStyle = createGlobalStyle`
 *,
@@ -48,7 +48,7 @@ hr {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  color: ${StyleVar.colorGrayDark};
+  color: ${VAR_COLOR.grayDark};
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -102,9 +102,9 @@ dd {
 
 blockquote {
   margin: 0 0 1rem;
-  background-color: ${StyleVar.colorMenu};
-  border-left: 5px solid ${StyleVar.colorGrayBright};
-  color: ${StyleVar.colorGrayDark};
+  background-color: ${VAR_COLOR.menu};
+  border-left: 5px solid ${VAR_COLOR.grayBright};
+  color: ${VAR_COLOR.grayDark};
   padding: 20px;
 }
 
@@ -112,7 +112,7 @@ b,
 strong,
 em,
 small {
-  color: ${StyleVar.colorGrayDark};
+  color: ${VAR_COLOR.grayDark};
   font-weight: bolder;
 }
 
