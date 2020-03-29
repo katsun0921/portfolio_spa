@@ -29,15 +29,6 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allWordpressSiteMetadata {
-          edges {
-            node {
-              description
-              name
-            }
-          }
-        }
-      {
         allWordpressPage {
           edges {
             node {
@@ -122,6 +113,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         config: path.resolve(__dirname, 'config'),
         assets: path.resolve(__dirname, 'src/assets'),
         components: path.resolve(__dirname, 'src/components'),
+        styles: path.resolve(__dirname, 'src/styles'),
         lib: path.resolve(__dirname, 'src/lib'),
         pages: path.resolve(__dirname, 'src/pages'),
         templates: path.resolve(__dirname, 'src/templates'),
