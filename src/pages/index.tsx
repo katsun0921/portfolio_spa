@@ -3,9 +3,9 @@ import { Link } from 'gatsby'
 
 import Layout from 'components/layout'
 import SEO from 'components/seo'
-import 'styles/scss/object/project/_top.scss'
-import 'styles/scss/layout/_container.scss'
-import 'styles/scss/layout/_menu.scss'
+import 'scss/object/project/_top.scss'
+import 'scss/layout/_container.scss'
+import 'scss/layout/_menu.scss'
 
 const IndexPage = () => (
   <Layout>

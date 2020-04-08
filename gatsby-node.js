@@ -110,11 +110,12 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
+        images: path.resolve(__dirname, 'src/assets/images'),
+        scss: path.resolve(__dirname, 'src/assets/scss'),
         components: path.resolve(__dirname, 'src/components'),
         styles: path.resolve(__dirname, 'src/styles'),
         pages: path.resolve(__dirname, 'src/pages'),
         templates: path.resolve(__dirname, 'src/templates'),
-        images: path.resolve(__dirname, 'src/images'),
       },
     },
   })
