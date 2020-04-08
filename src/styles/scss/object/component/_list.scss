@@ -1,0 +1,13 @@
+.c-list {
+  list-style: outside;
+  list-style-type: none;
+  margin-left: 20px;
+
+  &--none {
+    margin-left: -20px;
+  }
+
+  &--disc {
+    list-style-type: disc;
+  }
+}

@@ -1,0 +1,14 @@
+root = true
+
+[*]
+end_of_line = lf                  # 改行コード
+charset = utf-8                   # 文字コード
+trim_trailing_whitespace = true   # 行末の空白を削除
+insert_final_newline = true       # 最終行に空行を入れるかどうか
+
+indent_style = space              # インデントタイプ
+indent_size = 2                   # インデントサイズ
+tab_width = 4                     # タブサイズ
+
+[*.md]
+trim_trailing_whitespace = false
