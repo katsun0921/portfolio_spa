@@ -7,43 +7,36 @@
 
 import React, { ReactNode } from 'react'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
+import styled from 'styled-components'
 
-import Header from 'components/header'
-import 'components/layout.css'
+import GlobalStyle from '../styles/layout'
+import 'styles/scss/layout/_container.scss'
+import bgImg from 'images/main.jpg'
+import bgImgSp from 'images/main_sp.jpg'
+import { VAR_MQ } from '../styles/variables'
 
+const Main = styled.main`
+  @media screen and (${VAR_MQ.MD}) {
+    background: url(${bgImgSp});
+    background-size: cover;
+  }
+  background: url(${bgImg});
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  z-index: 0;
+`
 interface Prop {
   children: ReactNode
 }
 
 const Layout = ({ children }: Prop) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+      <GlobalStyle />
+      <Main>{children}</Main>
     </>
   )
 }

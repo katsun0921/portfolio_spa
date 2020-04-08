@@ -1,0 +1,31 @@
+.c-heading {
+  &__big {
+    border-bottom: 1px solid $colorGrayBright;
+    color: $colorGrayDark;
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+  }
+
+  &__middle {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+
+  &__sub {
+    display: block;
+    font-size: 1.4rem;
+    text-align: center;
+
+    &::after {
+      background: $colorGrayDark;
+      content: '';
+      display: block;
+      height: 2px;
+      margin: 20px auto;
+      width: 40px;
+    }
+  }
+}

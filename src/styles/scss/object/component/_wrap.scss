@@ -1,0 +1,22 @@
+.c-wrap {
+  &--center { // 上下左右中央
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include MQ($MD) {
+      text-align: center;
+    }
+  }
+
+  &--rowCenter { // 横一列
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    @include MQ($MD) {
+      text-align: center;
+    }
+  }
+}

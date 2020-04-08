@@ -1,0 +1,34 @@
+.c-pagination {
+  display: block;
+  text-align: center;
+
+  &__linkList {
+    border-radius: 0.25rem;
+    display: inline-flex;
+  }
+
+  &__link {
+    @mixin pageLink {
+      background-color: $colorGrayDarkLittle;
+      color: $colorWhite;
+      @content;
+    }
+
+    background-color: $colorMenu;
+    color: $colorPageLink;
+    display: block;
+    padding: 0.5rem 0.75rem;
+
+    &.is-active {
+      @include pageLink();
+    }
+
+    &:focus {
+      @include pageLink();
+    }
+
+    &:hover {
+      @include pageLink();
+    }
+  }
+}

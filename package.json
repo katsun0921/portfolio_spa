@@ -6,6 +6,7 @@
   "author": "katsumasa-sato",
   "dependencies": {
     "@types/react-helmet": "^5.0.15",
+    "@types/styled-components": "^5.0.1",
     "babel-plugin-styled-components": "^1.10.7",
     "bluebird": "^3.7.2",
     "gatsby": "^2.20.3",
@@ -13,15 +14,17 @@
     "gatsby-plugin-manifest": "^2.3.2",
     "gatsby-plugin-offline": "^3.0.32",
     "gatsby-plugin-react-helmet": "^3.1.21",
+    "gatsby-plugin-sass": "^2.2.1",
     "gatsby-plugin-styled-components": "^3.1.19",
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-source-wordpress": "^3.1.62",
     "gatsby-transformer-json": "^2.2.26",
+    "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-helmet": "^5.2.1",
-    "styled-components": "^5.0.1"
+    "react-is": "^16.13.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.25.0",
@@ -36,6 +39,7 @@
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
+    "styled-components": "^5.0.1",
     "typescript": "^3.8.3"
   },
   "keywords": [
@@ -47,7 +51,7 @@
     "gatsby:build": "gatsby build",
     "gatsby:dev": "gatsby develop",
     "gatsby:serve": "gatsby serve",
-    "gatsby:clean": "gatsby clean",
+    "gatsby:dev:refresh": "gatsby clean && gatsby develop",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "dev": "concurrently -k -n COMPILER,NODEMON -c yellow,blue \"tsc -w\" \"nodemon -w dist -q dist/index.js\""
   },

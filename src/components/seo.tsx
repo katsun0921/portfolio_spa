@@ -53,8 +53,8 @@ function SEO({ meta, title }: Prop) {
       htmlAttributes={{
         lang: `${site.siteMetadata.lang}`,
       }}
-      title={title}
-      titleTemplate={`%s | ${metaTitle}`}
+      title={title ? title : metaTitle}
+      titleTemplate={title ? `%s | ${metaTitle}` : title}
       meta={[
         {
           name: `description`,
@@ -89,7 +89,12 @@ function SEO({ meta, title }: Prop) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Noto+Serif+JP|Taviraj&amp;display=swap"
+      />
+    </Helmet>
   )
 }
 
