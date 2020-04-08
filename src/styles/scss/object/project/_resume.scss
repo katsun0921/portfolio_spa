@@ -1,0 +1,199 @@
+.p-resume {
+  // Profile
+  &__infoList {
+    border-bottom: 1px solid $colorGrayBright;
+    border-top: 1px solid $colorGrayBright;
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1.3em;
+    margin: 20px 0;
+    overflow: auto;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 100%;
+
+    &List {
+      display: flex;
+      height: 40px;
+      width: 250px;
+    }
+
+    &Term {
+      color: $colorGrayDark;
+      display: inline-block;
+      font-weight: 400;
+      margin-right: 5px;
+      padding-right: 5px;
+      white-space: nowrap;
+
+      &::after {
+        content: ':';
+        padding-left: 5px;
+      }
+    }
+  }
+
+  // Skills
+
+  &__skill {
+    background-color: $colorGrayBright;
+    border-radius: 0;
+    box-shadow: none;
+    height: 2px;
+    margin-bottom: 30px;
+    overflow: visible;
+    position: relative;
+    top: 14px;
+    width: 90%;
+
+    &Label {
+      color: $colorGrayDark;
+      font-weight: 300;
+      margin-bottom: 10px;
+
+      &Sub {
+        font-weight: 500;
+
+        &::before {
+          content: ' - ';
+        }
+      }
+    }
+
+    &Bar {
+      background-color: $colorGrayDarkLittle;
+      box-shadow: none;
+      height: 2px;
+      position: relative;
+
+      &Year {
+        background: $colorMenu;
+        color: $colorBlack;
+        display: block;
+        font-size: 0.8em;
+        font-weight: 500;
+        padding: 5px 15px;
+        position: absolute;
+        right: -20px;
+        text-align: center;
+        top: -16px;
+      }
+    }
+  }
+
+  &__iconList--item {
+    padding-left: 25px;
+
+    &::before {
+      color: $colorGrayDarkLittle;
+      content: '\f3fd';
+      font-size: 24px;
+      left: 20px;
+      position: absolute;
+    }
+  }
+
+  // timeline (Experience, Education)
+  &__timeline {
+    @mixin hgroupHeading($argumentColor) {
+      color: $argumentColor;
+      display: table-cell;
+      margin-bottom: 10px;
+      text-transform: none;
+    }
+
+    display: flex;
+    position: relative;
+
+    &::before {
+      background: $colorGrayBright;
+      bottom: 0;
+      content: '';
+      height: 100%;
+      left: 18px;
+      position: absolute;
+      top: 50px;
+      width: 1px;
+    }
+
+    &::after {
+      color: $colorGrayBright;
+      content: '';
+      font-size: 36px;
+      height: 50px;
+      left: -5px;
+      line-height: 45px;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      width: 50px;
+    }
+
+    &Block {
+      margin-top: 70px;
+      width: 100%;
+    }
+
+    &Exp {
+      padding: 20px 20px 0 80px;
+      position: relative;
+
+      &::after {
+        background: $colorWhite;
+        border: 2px solid $colorGrayBright;
+        border-radius: 50%;
+        content: '';
+        height: 20px;
+        left: 9px;
+        position: absolute;
+        text-align: center;
+        top: 24px;
+        width: 20px;
+      }
+    }
+
+    &Hgroup {
+      display: flex;
+      font-size: 1.6rem;
+      margin-bottom: 5px;
+    }
+
+    &Heading {
+      @include hgroupHeading($colorGrayDarkLittle);
+
+      &Date {
+        @include hgroupHeading($colorBody);
+
+        font-size: 1.4rem;
+        font-weight: 400;
+        margin-left: auto;
+        padding-left: 60px;
+        position: relative;
+        text-align: right;
+
+        &::before {
+          color: $colorGrayBright;
+          content: '/';
+          left: 0;
+          left: 30px;
+          position: absolute;
+        }
+      }
+    }
+
+    &Content {
+      display: flex;
+      flex-wrap: wrap;
+
+      &Heading {
+        margin-right: 5px;
+        text-align: right;
+
+        &::after {
+          content: ':';
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}

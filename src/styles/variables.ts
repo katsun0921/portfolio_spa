@@ -1,4 +1,5 @@
 type ColorProp = { [key: string]: string }
+type MQProp = { [key: string]: string }
 
 export const VAR_COLOR: ColorProp = {
   // colors
@@ -11,4 +12,11 @@ export const VAR_COLOR: ColorProp = {
   grayDarkLittle: '#666',
   grayBright: '#ddd',
   white: '#fff',
+}
+
+export const VAR_MQ: MQProp = {
+  SM: 'max-width: 576px',
+  MD: 'max-width: 768px',
+  LG: 'max-width: 992px',
+  XL: 'max-width: 1200px',
 }

@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-import { VAR_COLOR } from 'styles/_variables'
+import { VAR_COLOR } from './variables'
 
 const GlobalStyle = createGlobalStyle`
 *,
@@ -24,7 +24,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Noto Serif JP", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1.6rem;
   font-weight: 300;
   line-height: 1.8;
@@ -33,6 +33,7 @@ body {
   background-color: #fff;
   overflow-x: hidden;
   overflow-y: auto;
+  margin: 0;
 }
 
 [tabindex="-1"]:focus {

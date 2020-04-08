@@ -1,0 +1,45 @@
+// foundation
+@import '../foundation/index';
+
+.l-container {
+  @include MQ ($MD) {
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 30px 15px;
+  }
+
+  height: auto;
+  max-width: 1140px;
+  overflow: hidden;
+  padding: 120px 70px 30px;
+
+  &.is-none {
+    display: none;
+  }
+
+  &__background {
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    z-index: 0;
+
+    &--img {
+      background: url('../../../images/main.jpg');
+      background-size: cover;
+    }
+
+    &--overlay {
+      background-color: rgba(0, 0, 0, 1);
+      height: 100%;
+      opacity: 0.5;
+      position: fixed;
+      width: 100%;
+
+      .overlay.light {
+        background-color: rgba(255, 255, 255, 1);
+      }
+    }
+  }
+}

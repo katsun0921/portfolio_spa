@@ -89,7 +89,12 @@ function SEO({ meta, title }: Prop) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Noto+Serif+JP|Taviraj&amp;display=swap"
+      />
+    </Helmet>
   )
 }
 
