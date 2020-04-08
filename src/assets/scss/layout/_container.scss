@@ -25,11 +25,6 @@
     width: 100%;
     z-index: 0;
 
-    &--img {
-      background: url('../../../images/main.jpg');
-      background-size: cover;
-    }
-
     &--overlay {
       background-color: rgba(0, 0, 0, 1);
       height: 100%;
