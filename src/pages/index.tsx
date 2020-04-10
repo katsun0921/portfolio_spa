@@ -3,39 +3,30 @@ import { Link } from 'gatsby'
 
 import Layout from 'components/layout'
 import SEO from 'components/seo'
-import PostBlog from 'templates/blog'
-import PostWork from 'templates/work'
 import 'scss/object/project/_top.scss'
 import 'scss/layout/_container.scss'
 import 'scss/layout/_menu.scss'
+import Content from '../templates/content'
 
 interface IndexProps {}
 
-interface showProps {
+interface showState {
   [key: string]: boolean
 }
 
-class IndexPage extends Component<IndexProps, showProps> {
-  constructor(props: showProps) {
+class IndexPage extends Component<IndexProps, showState> {
+  constructor(props: showState) {
     super(props)
     this.state = {
-      showWork: false,
-      showBlog: false,
+      showContent: false,
     }
   }
-  clickShowWork() {
+  clickShowContent() {
     this.setState({
-      showWork: true,
-      showBlog: false,
+      showContent: true,
     })
   }
 
-  clickShowBlog() {
-    this.setState({
-      showWork: false,
-      showBlog: true,
-    })
-  }
   render() {
     return (
       <Layout>
@@ -69,7 +60,7 @@ class IndexPage extends Component<IndexProps, showProps> {
               </div>
             </button>
             <button
-              onClick={() => this.clickShowWork()}
+              onClick={() => this.clickShowContent()}
               className="js-topBtn p-top__workBlock l-menu__block"
             >
               <div className="p-top__workContainer">
@@ -79,7 +70,7 @@ class IndexPage extends Component<IndexProps, showProps> {
               </div>
             </button>
             <button
-              onClick={() => this.clickShowBlog()}
+              onClick={() => this.clickShowContent()}
               className="js-btnBlog js-topBtn p-top__blogBlock l-menu__block"
             >
               <div className="p-top__blogContainer">
@@ -90,8 +81,7 @@ class IndexPage extends Component<IndexProps, showProps> {
             </button>
           </nav>
         </div>
-        {this.state.showWork ? <PostWork /> : null}
-        {this.state.showBlog ? <PostBlog /> : null}
+        {this.state.showContent ? <Content /> : null}
       </Layout>
     )
   }
