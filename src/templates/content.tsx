@@ -1,4 +1,4 @@
-import React, { Component, SFC, ReactElement, ReactNode } from 'react'
+import React, { Component, FC, ReactElement } from 'react'
 
 const TAB_TYPES = {
   WORK: 'work',
@@ -19,13 +19,15 @@ const tabData = [
 interface TabsComponent_Props {
   currentTabType: string
   tabData: Array<{ text: string; type: string }>
-  onClick: any //(event: React.MouseEvent<HTMLInputElement>) => void
+  onClick: any // あとでmapのtab.typeエラーを調べる() => (event: React.MouseEvent<HTMLButtonElement>) => string
 }
+
 type Items_Props = {
   tabType: string
   children: ReactElement
-  changeTab: any
+  changeTab: string
 }
+
 const TabsNav = ({ currentTabType, tabData, onClick }: TabsComponent_Props) => (
   <ul className="tabs">
     {tabData.map((tab) => (
@@ -39,12 +41,12 @@ const TabsNav = ({ currentTabType, tabData, onClick }: TabsComponent_Props) => (
   </ul>
 )
 
-class Items extends Component<{}, ReactNode> {
-  static Work: SFC<Items_Props> = ({ tabType, children }) =>
+class Items extends Component {
+  static Work: FC<Items_Props> = ({ tabType, children }) =>
     tabType === TAB_TYPES.WORK ? children : null
-  static Blog: SFC<Items_Props> = ({ tabType, children }) =>
+  static Blog: FC<Items_Props> = ({ tabType, children }) =>
     tabType === TAB_TYPES.BLOG ? children : null
-  static TabsNav: SFC<Items_Props> = ({ tabType, changeTab, ...props }) => (
+  static TabsNav: FC<Items_Props> = ({ tabType, changeTab, ...props }) => (
     <TabsNav currentTabType={tabType} tabData={tabData} onClick={changeTab} />
   )
 
@@ -52,7 +54,7 @@ class Items extends Component<{}, ReactNode> {
     currentTabType: TAB_TYPES.WORK,
   }
 
-  changeTab = (tabType: any) => {
+  changeTab = (tabType: string) => {
     this.setState({ currentTabType: tabType })
   }
 
