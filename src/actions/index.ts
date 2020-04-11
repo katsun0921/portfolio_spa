@@ -1,2 +1,4 @@
-export const WORK = 'work'
-export const BLOG = 'blog'
+export const TAB_TYPES = {
+  WORK: 'work',
+  BLOG: 'blog',
+}
