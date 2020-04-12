@@ -1,6 +1,14 @@
-import React, { Component, FC, ReactElement } from 'react'
+import React, {
+  Component,
+  FC,
+  ReactElement,
+  createContext,
+  useContext,
+} from 'react'
 
 import { TAB_TYPES } from '../actions/index'
+
+const Context = createContext('')
 
 const tabData = [
   {
@@ -16,7 +24,7 @@ const tabData = [
 interface TabsComponent_Props {
   currentTabType: string
   tabData: Array<{ text: string; type: string }>
-  onClick: any // あとでmapのtab.typeエラーを調べる() => (event: React.MouseEvent<HTMLButtonElement>) => string
+  changeTab: any // あとでmapのtab.typeエラーを調べる() => (event: React.MouseEvent<HTMLButtonElement>) => string
 }
 
 type Items_Props = {
@@ -25,35 +33,51 @@ type Items_Props = {
   changeTab: string
 }
 
-const MenuButton: FC = ({ children }) => (
-  <button type="button" className="l-menuInline__list">
+const MenuButton: FC = ({ children, onClick }) => (
+  <button
+    type="button"
+    className="l-menuInline__list"
+    onClick={() =>
+      onClick({
+        showContent: false,
+      })
+    }
+  >
     {children}
   </button>
 )
 
-const NavTabs = ({ currentTabType, tabData, onClick }: TabsComponent_Props) => (
-  <nav className="l-menu__container">
-    <ul className="l-menuInline">
-      <li>
-        <MenuButton>Resume</MenuButton>
-      </li>
-      {tabData.map((tab) => (
-        <li
-          key={tab.type}
-          className={currentTabType === tab.type ? 'active' : ''}
-          onClick={() => onClick(tab.type)}
-        >
-          <MenuButton>{tab.text}</MenuButton>
+const NavTabs = ({
+  currentTabType,
+  tabData,
+  changeTab,
+}: TabsComponent_Props) => {
+  const clickShowContent = useContext(Context)
+  return (
+    <nav className="l-menu__container">
+      <ul className="l-menuInline">
+        <li>
+          <MenuButton>Resume</MenuButton>
         </li>
-      ))}
-      <li>
-        <MenuButton>
-          <span className="fas fa-times" aria-hidden="true"></span>
-        </MenuButton>
-      </li>
-    </ul>
-  </nav>
-)
+        {tabData.map((tab) => (
+          <li
+            key={tab.type}
+            className={currentTabType === tab.type ? 'active' : ''}
+          >
+            <MenuButton onClick={() => changeTab(tab.type)}>
+              {tab.text}
+            </MenuButton>
+          </li>
+        ))}
+        <li>
+          <MenuButton onClick={clickShowContent}>
+            <span className="fas fa-times" aria-hidden="true"></span>
+          </MenuButton>
+        </li>
+      </ul>
+    </nav>
+  )
+}
 
 class Items extends Component {
   constructor(props: string) {
@@ -68,7 +92,7 @@ class Items extends Component {
   static Blog: FC<Items_Props> = ({ tabType, children }) =>
     tabType === TAB_TYPES.BLOG ? children : null
   static NavTabs: FC<Items_Props> = ({ tabType, changeTab, ...props }) => (
-    <NavTabs currentTabType={tabType} tabData={tabData} onClick={changeTab} />
+    <NavTabs currentTabType={tabType} tabData={tabData} changeTab={changeTab} />
   )
 
   componentDidUpdate(prevProps: any) {
@@ -93,14 +117,16 @@ class Items extends Component {
   }
 }
 
-const Content = ({ topTabType }: any) => (
-  <div className="l-content__blocks">
-    <Items topTabType={topTabType}>
-      <Items.NavTabs />
-      <Items.Work>work</Items.Work>
-      <Items.Blog>blog</Items.Blog>
-    </Items>
-  </div>
+const Content = ({ clickShowContent, topTabType }: any) => (
+  <Context.Provider value={clickShowContent}>
+    <div className="l-content__blocks">
+      <Items topTabType={topTabType}>
+        <Items.NavTabs />
+        <Items.Work>work</Items.Work>
+        <Items.Blog>blog</Items.Blog>
+      </Items>
+    </div>
+  </Context.Provider>
 )
 
 export default Content

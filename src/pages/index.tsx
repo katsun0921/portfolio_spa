@@ -21,10 +21,11 @@ class IndexPage extends Component<IndexProps, showState> {
       showContent: false,
       tabType: '',
     }
+    this.clickShowContent = this.clickShowContent.bind(this)
   }
   clickShowContent(type: string) {
     this.setState({
-      showContent: true,
+      showContent: !this.state.showContent,
       tabType: type,
     })
   }
@@ -109,7 +110,10 @@ class IndexPage extends Component<IndexProps, showState> {
           </nav>
         </div>
         {this.state.showContent ? (
-          <Content topTabType={this.state.tabType} />
+          <Content
+            topTabType={this.state.tabType}
+            clickShowContent={this.clickShowContent}
+          />
         ) : null}
       </Layout>
     )
