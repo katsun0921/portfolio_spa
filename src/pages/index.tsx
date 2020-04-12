@@ -35,7 +35,6 @@ class IndexPage extends Component<IndexProps, showState> {
       <Layout>
         <SEO />
         {/* <p className="l-content__ieError" id="ieError"></p> */}
-        {/*<div className="l-container__background--overlay"></div>*/}
         <div className="l-container">
           <section className="js-topName p-top__name">
             <div className="js-topName p-top__nameContainer">

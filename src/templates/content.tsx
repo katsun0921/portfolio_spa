@@ -1,12 +1,4 @@
-import React, {
-  Component,
-  FC,
-  ReactElement,
-  ReactNode,
-  ReactChild,
-  ReactChildren,
-  ReactDOM,
-} from 'react'
+import React, { Component, FC, ReactElement } from 'react'
 
 import { TAB_TYPES } from '../actions/index'
 
@@ -33,7 +25,7 @@ type Items_Props = {
   changeTab: string
 }
 
-const TabsNav = ({ currentTabType, tabData, onClick }: TabsComponent_Props) => (
+const NavTabs = ({ currentTabType, tabData, onClick }: TabsComponent_Props) => (
   <ul className="tabs">
     {tabData.map((tab) => (
       <li
@@ -59,8 +51,8 @@ class Items extends Component {
     tabType === TAB_TYPES.WORK ? children : null
   static Blog: FC<Items_Props> = ({ tabType, children }) =>
     tabType === TAB_TYPES.BLOG ? children : null
-  static TabsNav: FC<Items_Props> = ({ tabType, changeTab, ...props }) => (
-    <TabsNav currentTabType={tabType} tabData={tabData} onClick={changeTab} />
+  static NavTabs: FC<Items_Props> = ({ tabType, changeTab, ...props }) => (
+    <NavTabs currentTabType={tabType} tabData={tabData} onClick={changeTab} />
   )
 
   componentDidUpdate(prevProps: any) {
@@ -87,7 +79,7 @@ class Items extends Component {
 
 const Content = ({ topTabType }: any) => (
   <Items topTabType={topTabType}>
-    <Items.TabsNav />
+    <Items.NavTabs />
     <Items.Work>work</Items.Work>
     <Items.Blog>blog</Items.Blog>
   </Items>

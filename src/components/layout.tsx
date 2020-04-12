@@ -27,6 +27,15 @@ const Main = styled.main`
   position: fixed;
   width: 100%;
   z-index: 0;
+  &::before {
+    content: '';
+    background-color: black;
+    height: 100%;
+    opacity: 0.5;
+    position: fixed;
+    width: 100%;
+    z-index: -999;
+  }
 `
 interface Prop {
   children: ReactNode
