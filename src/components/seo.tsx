@@ -94,6 +94,7 @@ function SEO({ meta, title }: Prop) {
         rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Noto+Serif+JP|Taviraj&amp;display=swap"
       />
+      <script src="https://kit.fontawesome.com/48f542ac57.js"></script>
     </Helmet>
   )
 }

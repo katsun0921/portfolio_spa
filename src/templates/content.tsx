@@ -4,11 +4,11 @@ import { TAB_TYPES } from '../actions/index'
 
 const tabData = [
   {
-    text: 'Work_TAB',
+    text: 'Work',
     type: TAB_TYPES.WORK,
   },
   {
-    text: 'Blog_TAB',
+    text: 'Blog',
     type: TAB_TYPES.BLOG,
   },
 ]
@@ -25,18 +25,34 @@ type Items_Props = {
   changeTab: string
 }
 
+const MenuButton: FC = ({ children }) => (
+  <button type="button" className="l-menuInline__list">
+    {children}
+  </button>
+)
+
 const NavTabs = ({ currentTabType, tabData, onClick }: TabsComponent_Props) => (
-  <ul className="tabs">
-    {tabData.map((tab) => (
-      <li
-        key={tab.type}
-        className={currentTabType === tab.type ? 'active' : ''}
-        onClick={() => onClick(tab.type)}
-      >
-        {tab.text}
+  <nav className="l-menu__container">
+    <ul className="l-menuInline">
+      <li>
+        <MenuButton>Resume</MenuButton>
       </li>
-    ))}
-  </ul>
+      {tabData.map((tab) => (
+        <li
+          key={tab.type}
+          className={currentTabType === tab.type ? 'active' : ''}
+          onClick={() => onClick(tab.type)}
+        >
+          <MenuButton>{tab.text}</MenuButton>
+        </li>
+      ))}
+      <li>
+        <MenuButton>
+          <span className="fas fa-times" aria-hidden="true"></span>
+        </MenuButton>
+      </li>
+    </ul>
+  </nav>
 )
 
 class Items extends Component {
@@ -78,11 +94,13 @@ class Items extends Component {
 }
 
 const Content = ({ topTabType }: any) => (
-  <Items topTabType={topTabType}>
-    <Items.NavTabs />
-    <Items.Work>work</Items.Work>
-    <Items.Blog>blog</Items.Blog>
-  </Items>
+  <div className="l-content__blocks">
+    <Items topTabType={topTabType}>
+      <Items.NavTabs />
+      <Items.Work>work</Items.Work>
+      <Items.Blog>blog</Items.Blog>
+    </Items>
+  </div>
 )
 
 export default Content

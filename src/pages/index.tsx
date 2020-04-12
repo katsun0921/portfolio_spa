@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 
 import Layout from 'components/layout'
 import SEO from 'components/seo'
+import 'scss/layout/index.scss'
 import 'scss/object/project/_top.scss'
-import 'scss/layout/_container.scss'
-import 'scss/layout/_menu.scss'
 import Content from '../templates/content'
 import { TAB_TYPES } from '../actions/index'
 
@@ -31,20 +30,38 @@ class IndexPage extends Component<IndexProps, showState> {
   }
 
   render() {
+    const topClassName = 'p-top'
+    const menuClassName = 'l-menu'
     return (
       <Layout>
         <SEO />
         {/* <p className="l-content__ieError" id="ieError"></p> */}
         <div className="l-container">
-          <section className="js-topName p-top__name">
-            <div className="js-topName p-top__nameContainer">
-              <h1 className="p-top__headingMain">
+          <section
+            className={
+              this.state.showContent
+                ? `js-topName ${topClassName}__name is-rotation`
+                : `${topClassName}__name`
+            }
+          >
+            <div
+              className={
+                this.state.showContent
+                  ? `js-topName ${topClassName}__nameContainer is-rotation`
+                  : `js-topName ${topClassName}__nameContainer`
+              }
+            >
+              <h1 className={`${topClassName}__headingMain`}>
                 Katsumasa
-                <span className="p-top__headingMainUnder">Sato</span>
-                <span className="p-top__headingMain--sub">WEB DEVELOPER</span>
+                <span className={`${topClassName}__headingMainUnder`}>
+                  Sato
+                </span>
+                <span className={`${topClassName}__headingMain--sub`}>
+                  WEB DEVELOPER
+                </span>
               </h1>
               <a
-                className="p-top__nameSkillLink"
+                className={`${topClassName}__nameSkillLink`}
                 href="https://drive.google.com/open?id=1pWnjGrUb1viZDfJ0AbazUe1gE14RgJuNk8UmCin2Xk4"
                 target="_blank"
                 rel="noopener"
@@ -53,30 +70,38 @@ class IndexPage extends Component<IndexProps, showState> {
               </a>
             </div>
           </section>
-          <nav className="l-menu__blocks" id="js-topMenu">
-            <button className="js-btnResume js-topBtn p-top__resumeBlock l-menu__block">
-              <div className="p-top__resumeContainer">
-                <div className="l-menuResume l-menu__subHeading l-menu--resume">
+          <nav className={`${menuClassName}__blocks`} id="js-topMenu">
+            <button
+              className={`js-btnResume js-topBtn ${topClassName}__resumeBlock ${menuClassName}__block`}
+            >
+              <div className={`${topClassName}__resumeContainer`}>
+                <div
+                  className={`${menuClassName}Resume ${menuClassName}__subHeading ${menuClassName}--resume`}
+                >
                   Resume
                 </div>
               </div>
             </button>
             <button
               onClick={() => this.clickShowContent(TAB_TYPES.WORK)}
-              className="js-topBtn p-top__workBlock l-menu__block"
+              className={`js-topBtn ${topClassName}__workBlock ${menuClassName}__block`}
             >
-              <div className="p-top__workContainer">
-                <div className="l-menuWork l-menu__subHeading l-menu--work">
+              <div className={`${topClassName}__workContainer`}>
+                <div
+                  className={`${menuClassName}Work ${menuClassName}__subHeading ${menuClassName}--work`}
+                >
                   Work
                 </div>
               </div>
             </button>
             <button
               onClick={() => this.clickShowContent(TAB_TYPES.BLOG)}
-              className="js-btnBlog js-topBtn p-top__blogBlock l-menu__block"
+              className={`js-btnBlog js-topBtn ${topClassName}__blogBlock ${menuClassName}__block`}
             >
-              <div className="p-top__blogContainer">
-                <div className="l-menuBlog l-menu__subHeading l-menu--blog">
+              <div className={`${topClassName}__blogContainer`}>
+                <div
+                  className={`${menuClassName}Blog ${menuClassName}__subHeading ${menuClassName}--blog`}
+                >
                   Blog
                 </div>
               </div>
