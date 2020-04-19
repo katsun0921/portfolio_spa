@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import Layout from 'components/layout'
 import SEO from 'components/seo'
@@ -6,20 +6,26 @@ import 'scss/layout/index.scss'
 import 'scss/object/project/_top.scss'
 import Content from '../templates/content'
 import { TAB_TYPES } from '../actions/index'
+import PostContext from '../contexts/post'
 
 interface IndexProps {}
 
 interface showState {
   showContent: boolean
   tabType: string
+  props: any
+  post: boolean
 }
 
-class IndexPage extends Component<IndexProps, showState> {
+class IndexPage extends React.Component<IndexProps, showState> {
   constructor(props: showState) {
+    const post: boolean = props.pageContext.post
     super(props)
     this.state = {
-      showContent: false,
-      tabType: '',
+      showContent: post ? post : false,
+      tabType: post ? props.pageContext.node.categories[0].name : '',
+      props: this.props,
+      post: post ? post : false,
     }
     this.clickShowContent = this.clickShowContent.bind(this)
   }
@@ -110,10 +116,12 @@ class IndexPage extends Component<IndexProps, showState> {
           </nav>
         </div>
         {this.state.showContent ? (
-          <Content
-            topTabType={this.state.tabType}
-            clickShowContent={this.clickShowContent}
-          />
+          <PostContext.Provider value={this.state}>
+            <Content
+              topTabType={this.state.tabType}
+              clickShowContent={this.clickShowContent}
+            />
+          </PostContext.Provider>
         ) : null}
       </Layout>
     )

@@ -1,2 +1,1 @@
-export { default as PostWork } from './work'
-export { default as PostBlog } from './blog'
+export { default as PostBlog } from '../Blog'

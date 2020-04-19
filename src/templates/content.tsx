@@ -1,15 +1,12 @@
-import React, {
-  Component,
-  FC,
-  ReactElement,
-  createContext,
-  useContext,
-} from 'react'
+import React from 'react'
 
-import { PostWork, PostBlog } from './posts/index'
+import Post from './post'
+import { PostWork, PostBlog } from './posts'
 import { TAB_TYPES } from '../actions/index'
+import PostContext from '../contexts/post'
+import WorkList from './WorkList'
 
-const Context = createContext('')
+const Context = React.createContext('')
 
 const tabData = [
   {
@@ -30,11 +27,11 @@ interface TabsComponent_Props {
 
 type Items_Props = {
   tabType: string
-  children: ReactElement
+  children: React.ReactElement
   changeTab: string
 }
 
-const MenuButton: FC = ({ children, onClick }) => (
+const MenuButton: React.FC = ({ children, onClick }) => (
   <button
     type="button"
     className="l-menuInline__list"
@@ -53,7 +50,7 @@ const NavTabs = ({
   tabData,
   changeTab,
 }: TabsComponent_Props) => {
-  const clickShowContent = useContext(Context)
+  const clickShowContent = React.useContext(Context)
   return (
     <nav className="l-menu__container">
       <ul className="l-menuInline">
@@ -80,19 +77,24 @@ const NavTabs = ({
   )
 }
 
-class Items extends Component {
+class Items extends React.Component {
   constructor(props: string) {
     super(props)
     this.state = {
       currentTabType: this.props.topTabType,
       navTabType: this.props.topTabType,
+      props: this.props,
     }
   }
-  static Work: FC<Items_Props> = ({ tabType, children }) =>
+  static Work: React.FC<Items_Props> = ({ tabType, children }) =>
     tabType === TAB_TYPES.WORK ? children : null
-  static Blog: FC<Items_Props> = ({ tabType, children }) =>
+  static Blog: React.FC<Items_Props> = ({ tabType, children }) =>
     tabType === TAB_TYPES.BLOG ? children : null
-  static NavTabs: FC<Items_Props> = ({ tabType, changeTab, ...props }) => (
+  static NavTabs: React.FC<Items_Props> = ({
+    tabType,
+    changeTab,
+    ...props
+  }) => (
     <NavTabs currentTabType={tabType} tabData={tabData} changeTab={changeTab} />
   )
 
@@ -118,20 +120,21 @@ class Items extends Component {
   }
 }
 
-const Content = ({ clickShowContent, topTabType }: any) => (
-  <Context.Provider value={clickShowContent}>
-    <div className="l-content__blocks">
-      <Items topTabType={topTabType}>
-        <Items.NavTabs />
-        <Items.Work>
-          <PostWork />
-        </Items.Work>
-        <Items.Blog>
-          <PostBlog />
-        </Items.Blog>
-      </Items>
-    </div>
-  </Context.Provider>
-)
+const Content = ({ clickShowContent, topTabType }: any) => {
+  const value: any = React.useContext(PostContext)
+  return (
+    <Context.Provider value={clickShowContent}>
+      <div className="l-content__blocks">
+        <Items topTabType={topTabType}>
+          <Items.NavTabs />
+          <Items.Work>{value.post ? <Post /> : <WorkList />}</Items.Work>
+          <Items.Blog>
+            <PostBlog />
+          </Items.Blog>
+        </Items>
+      </div>
+    </Context.Provider>
+  )
+}
 
 export default Content

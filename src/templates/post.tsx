@@ -1,10 +1,22 @@
 import React from 'react'
-import Content from '../templates/content'
 
-export default ({ pageContext }: any) => (
-  <Content>
-    {console.log(pageContext)}
-    <h1 dangerouslySetInnerHTML={{ __html: pageContext.node.title }} />
-    <div dangerouslySetInnerHTML={{ __html: pageContext.node.content }} />
-  </Content>
-)
+import PostLayout from '../components/postLayout'
+import PostContext from '../contexts/post'
+
+const Post = () => {
+  const value: any = React.useContext(PostContext)
+  return (
+    <PostLayout>
+      <h1
+        dangerouslySetInnerHTML={{ __html: value.props.pageContext.node.title }}
+      />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: value.props.pageContext.node.content,
+        }}
+      />
+    </PostLayout>
+  )
+}
+
+export default Post

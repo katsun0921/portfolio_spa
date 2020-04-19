@@ -42,6 +42,9 @@ exports.createPages = async ({ graphql, actions }) => {
         allWordpressPost {
           edges {
             node {
+              categories {
+                name
+              }
               id
               excerpt
               wordpress_id
@@ -93,7 +96,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
   */
 
-  const postTemplate = path.resolve(`./src/templates/post.tsx`)
+  const postTemplate = path.resolve(`./src/pages/index.tsx`)
   // We want to create a detailed page for each post node.
   // The path field stems from the original WordPress link
   // and we use it for the slug to preserve url structure.
@@ -104,6 +107,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: slash(postTemplate),
       context: {
         node: edge.node,
+        post: true,
       },
     })
   })
