@@ -6,6 +6,7 @@ import React, {
   useContext,
 } from 'react'
 
+import { PostWork, PostBlog } from './posts/index'
 import { TAB_TYPES } from '../actions/index'
 
 const Context = createContext('')
@@ -122,8 +123,12 @@ const Content = ({ clickShowContent, topTabType }: any) => (
     <div className="l-content__blocks">
       <Items topTabType={topTabType}>
         <Items.NavTabs />
-        <Items.Work>work</Items.Work>
-        <Items.Blog>blog</Items.Blog>
+        <Items.Work>
+          <PostWork />
+        </Items.Work>
+        <Items.Blog>
+          <PostBlog />
+        </Items.Blog>
       </Items>
     </div>
   </Context.Provider>
