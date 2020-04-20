@@ -22,7 +22,6 @@ export default () => {
             tags {
               name
             }
-            wordpress_id
           }
         }
       }

@@ -1,10 +1,10 @@
 import React from 'react'
 
 import Post from './post'
-import { PostWork, PostBlog } from './posts'
 import { TAB_TYPES } from '../actions/index'
 import PostContext from '../contexts/post'
 import WorkList from './WorkList'
+import BlogList from './BlogList'
 
 const Context = React.createContext('')
 
@@ -128,9 +128,7 @@ const Content = ({ clickShowContent, topTabType }: any) => {
         <Items topTabType={topTabType}>
           <Items.NavTabs />
           <Items.Work>{value.post ? <Post /> : <WorkList />}</Items.Work>
-          <Items.Blog>
-            <PostBlog />
-          </Items.Blog>
+          <Items.Blog>{value.post ? <Post /> : <BlogList />}</Items.Blog>
         </Items>
       </div>
     </Context.Provider>
