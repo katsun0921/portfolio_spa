@@ -6,7 +6,7 @@ import PostContext from '../contexts/post'
 import WorkList from './WorkList'
 import BlogList from './BlogList'
 
-const Context = React.createContext('')
+const ContentContext = React.createContext('')
 
 const tabData = [
   {
@@ -50,7 +50,7 @@ const NavTabs = ({
   tabData,
   changeTab,
 }: TabsComponent_Props) => {
-  const clickShowContent = React.useContext(Context)
+  const clickShowContent = React.useContext(ContentContext)
   return (
     <nav className="l-menu__container">
       <ul className="l-menuInline">
@@ -123,7 +123,7 @@ class Items extends React.Component {
 const Content = ({ clickShowContent, topTabType }: any) => {
   const value: any = React.useContext(PostContext)
   return (
-    <Context.Provider value={clickShowContent}>
+    <ContentContext.Provider value={clickShowContent}>
       <div className="l-content__blocks">
         <Items topTabType={topTabType}>
           <Items.NavTabs />
@@ -131,7 +131,7 @@ const Content = ({ clickShowContent, topTabType }: any) => {
           <Items.Blog>{value.post ? <Post /> : <BlogList />}</Items.Blog>
         </Items>
       </div>
-    </Context.Provider>
+    </ContentContext.Provider>
   )
 }
 

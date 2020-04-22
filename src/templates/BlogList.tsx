@@ -43,7 +43,7 @@ const BlogList = () => {
           edge.node.content = omitText + '...'
         }
         return (
-          <article id={edge.node.id} className={`${blogClassName}__post`}>
+          <article key={edge.node.id} className={`${blogClassName}__post`}>
             <h3 className={`${blogClassName}__postTitle`}>{edge.node.title}</h3>
             <p className={`${blogClassName}__postInfo`}>
               <time>{edge.node.date}</time>

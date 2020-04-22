@@ -33,6 +33,7 @@ class IndexPage extends React.Component<IndexProps, showState> {
     this.setState({
       showContent: !this.state.showContent,
       tabType: type,
+      post: true ? false : true,
     })
   }
 
