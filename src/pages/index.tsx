@@ -28,11 +28,16 @@ class IndexPage extends React.Component<IndexProps, showState> {
       post: post ? post : false,
     }
     this.clickShowContent = this.clickShowContent.bind(this)
+    this.clickShowPost = this.clickShowPost.bind(this)
   }
   clickShowContent(type: string) {
     this.setState({
       showContent: !this.state.showContent,
       tabType: type,
+    })
+  }
+  clickShowPost() {
+    this.setState({
       post: true ? false : true,
     })
   }
@@ -121,6 +126,7 @@ class IndexPage extends React.Component<IndexProps, showState> {
             <Content
               topTabType={this.state.tabType}
               clickShowContent={this.clickShowContent}
+              clickShowPost={this.clickShowPost}
             />
           </PostContext.Provider>
         ) : null}

@@ -32,15 +32,7 @@ type Items_Props = {
 }
 
 const MenuButton: React.FC = ({ children, onClick }) => (
-  <button
-    type="button"
-    className="l-menuInline__list"
-    onClick={() =>
-      onClick({
-        showContent: false,
-      })
-    }
-  >
+  <button type="button" className="l-menuInline__list" onClick={onClick}>
     {children}
   </button>
 )
@@ -51,12 +43,11 @@ const NavTabs = ({
   changeTab,
 }: TabsComponent_Props) => {
   const clickShowContent = React.useContext(ContentContext)
-  const postValue: any = React.useContext(PostContext)
   return (
     <nav className="l-menu__container">
       <ul className="l-menuInline">
         <li>
-          <MenuButton>Resume</MenuButton>
+          <MenuButton onClick={() => alert('modal')}>Resume</MenuButton>
         </li>
         {tabData.map((tab) => (
           <li
@@ -69,7 +60,7 @@ const NavTabs = ({
           </li>
         ))}
         <li>
-          <MenuButton onClick={clickShowContent}>
+          <MenuButton onClick={() => clickShowContent(currentTabType)}>
             <span className="fas fa-times" aria-hidden="true"></span>
           </MenuButton>
         </li>
@@ -84,7 +75,6 @@ class Items extends React.Component {
     this.state = {
       currentTabType: this.props.topTabType,
       navTabType: this.props.topTabType,
-      post: this.props.post,
     }
   }
   static Work: React.FC<Items_Props> = ({ tabType, children }) =>
@@ -101,11 +91,11 @@ class Items extends React.Component {
     }
   }
 
-  changeTab = (tabType: string, post: boolean) => {
+  changeTab = (tabType: string) => {
     this.setState({
       currentTabType: tabType,
-      post: !post,
     })
+    this.props.clickShowPost()
   }
   render() {
     return React.Children.map(this.props.children, (child) =>
@@ -117,12 +107,16 @@ class Items extends React.Component {
   }
 }
 
-const Content = ({ clickShowContent, topTabType }: any) => {
+const Content = ({ clickShowContent, topTabType, clickShowPost }: any) => {
   const postValue: any = React.useContext(PostContext)
   return (
     <ContentContext.Provider value={clickShowContent}>
       <div className="l-content__blocks">
-        <Items topTabType={topTabType}>
+        <Items
+          topTabType={topTabType}
+          clickShowContent={clickShowContent}
+          clickShowPost={clickShowPost}
+        >
           <Items.NavTabs />
           <Items.Work>{postValue.post ? <Post /> : <WorkList />}</Items.Work>
           <Items.Blog>{postValue.post ? <Post /> : <BlogList />}</Items.Blog>
