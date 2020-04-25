@@ -51,6 +51,7 @@ const NavTabs = ({
   changeTab,
 }: TabsComponent_Props) => {
   const clickShowContent = React.useContext(ContentContext)
+  const postValue: any = React.useContext(PostContext)
   return (
     <nav className="l-menu__container">
       <ul className="l-menuInline">
@@ -83,18 +84,14 @@ class Items extends React.Component {
     this.state = {
       currentTabType: this.props.topTabType,
       navTabType: this.props.topTabType,
-      props: this.props,
+      post: this.props.post,
     }
   }
   static Work: React.FC<Items_Props> = ({ tabType, children }) =>
     tabType === TAB_TYPES.WORK ? children : null
   static Blog: React.FC<Items_Props> = ({ tabType, children }) =>
     tabType === TAB_TYPES.BLOG ? children : null
-  static NavTabs: React.FC<Items_Props> = ({
-    tabType,
-    changeTab,
-    ...props
-  }) => (
+  static NavTabs: React.FC<Items_Props> = ({ tabType, changeTab }) => (
     <NavTabs currentTabType={tabType} tabData={tabData} changeTab={changeTab} />
   )
 
@@ -104,12 +101,12 @@ class Items extends React.Component {
     }
   }
 
-  changeTab = (tabType: string) => {
+  changeTab = (tabType: string, post: boolean) => {
     this.setState({
       currentTabType: tabType,
+      post: !post,
     })
   }
-
   render() {
     return React.Children.map(this.props.children, (child) =>
       React.cloneElement(child as React.ReactElement, {
@@ -121,14 +118,14 @@ class Items extends React.Component {
 }
 
 const Content = ({ clickShowContent, topTabType }: any) => {
-  const value: any = React.useContext(PostContext)
+  const postValue: any = React.useContext(PostContext)
   return (
     <ContentContext.Provider value={clickShowContent}>
       <div className="l-content__blocks">
         <Items topTabType={topTabType}>
           <Items.NavTabs />
-          <Items.Work>{value.post ? <Post /> : <WorkList />}</Items.Work>
-          <Items.Blog>{value.post ? <Post /> : <BlogList />}</Items.Blog>
+          <Items.Work>{postValue.post ? <Post /> : <WorkList />}</Items.Work>
+          <Items.Blog>{postValue.post ? <Post /> : <BlogList />}</Items.Blog>
         </Items>
       </div>
     </ContentContext.Provider>
