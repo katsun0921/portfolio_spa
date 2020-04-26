@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Post from './post'
+import Post from './Post'
 import { TAB_TYPES } from '../actions/index'
-import PostContext from '../contexts/post'
+import PostContext from '../contexts/PostContext'
 import WorkList from './WorkList'
 import BlogList from './BlogList'
 
@@ -42,7 +42,7 @@ const NavTabs = ({
   tabData,
   changeTab,
 }: TabsComponent_Props) => {
-  const clickShowContent = React.useContext(ContentContext)
+  const clickShow = React.useContext(ContentContext)
   return (
     <nav className="l-menu__container">
       <ul className="l-menuInline">
@@ -52,7 +52,7 @@ const NavTabs = ({
         {tabData.map((tab) => (
           <li
             key={tab.type}
-            className={currentTabType === tab.type ? 'active' : ''}
+            className={currentTabType === tab.type ? 'is-active' : ''}
           >
             <MenuButton onClick={() => changeTab(tab.type)}>
               {tab.text}
@@ -60,7 +60,12 @@ const NavTabs = ({
           </li>
         ))}
         <li>
-          <MenuButton onClick={() => clickShowContent(currentTabType)}>
+          <MenuButton
+            onClick={() => {
+              clickShow.clickShowContent(currentTabType)
+              clickShow.clickShowPost()
+            }}
+          >
             <span className="fas fa-times" aria-hidden="true"></span>
           </MenuButton>
         </li>
@@ -110,7 +115,12 @@ class Items extends React.Component {
 const Content = ({ clickShowContent, topTabType, clickShowPost }: any) => {
   const postValue: any = React.useContext(PostContext)
   return (
-    <ContentContext.Provider value={clickShowContent}>
+    <ContentContext.Provider
+      value={{
+        clickShowContent: clickShowContent,
+        clickShowPost: clickShowPost,
+      }}
+    >
       <div className="l-content__blocks">
         <Items
           topTabType={topTabType}
@@ -118,8 +128,20 @@ const Content = ({ clickShowContent, topTabType, clickShowPost }: any) => {
           clickShowPost={clickShowPost}
         >
           <Items.NavTabs />
-          <Items.Work>{postValue.post ? <Post /> : <WorkList />}</Items.Work>
-          <Items.Blog>{postValue.post ? <Post /> : <BlogList />}</Items.Blog>
+          <Items.Work>
+            {postValue.post ? (
+              <Post clickShowPost={clickShowPost} />
+            ) : (
+              <WorkList />
+            )}
+          </Items.Work>
+          <Items.Blog>
+            {postValue.post ? (
+              <Post clickShowPost={clickShowPost} />
+            ) : (
+              <BlogList />
+            )}
+          </Items.Blog>
         </Items>
       </div>
     </ContentContext.Provider>

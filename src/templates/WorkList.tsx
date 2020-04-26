@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import PostLayout from '../components/postLayout'
+import PostLayout from '../components/PostLayout'
 import 'scss/object/project/_work.scss'
 
 export default () => {

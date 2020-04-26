@@ -1,20 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import PostLayout from '../components/postLayout'
-import PostContext from '../contexts/post'
+import PostLayout from '../components/PostLayout'
+import PostContext from '../contexts/PostContext'
+import { ColSide } from '../components/Col'
+import { PrimaryButton } from '../components/Button'
 
-const Post = () => {
+const Post = ({ clickShowPost }) => {
   const value: any = React.useContext(PostContext)
   return (
     <PostLayout>
       <h1
         dangerouslySetInnerHTML={{ __html: value.props.pageContext.node.title }}
       />
-      <div
+      <section
         dangerouslySetInnerHTML={{
           __html: value.props.pageContext.node.content,
         }}
       />
+      <ColSide>
+        <PrimaryButton onClick={() => clickShowPost()}>
+          {value.tabType}一覧に戻る
+        </PrimaryButton>
+      </ColSide>
     </PostLayout>
   )
 }

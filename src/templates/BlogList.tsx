@@ -2,7 +2,9 @@ import React from 'react'
 
 import { useStaticQuery, graphql } from 'gatsby'
 
-import PostLayout from '../components/postLayout'
+import { LinkDetail } from '../components/Link'
+import { ColSide } from '../components/Col'
+import PostLayout from '../components/PostLayout'
 import 'scss/object/project/_blog.scss'
 
 const BlogList = () => {
@@ -53,9 +55,9 @@ const BlogList = () => {
               className={`${blogClassName}__postBody`}
               dangerouslySetInnerHTML={{ __html: edge.node.content }}
             />
-            <a href={edge.node.path} className="c-btn c-btn--block">
-              READ MORE
-            </a>
+            <ColSide>
+              <LinkDetail path={edge.node.path}>READ MORE</LinkDetail>
+            </ColSide>
           </article>
         )
       })}
