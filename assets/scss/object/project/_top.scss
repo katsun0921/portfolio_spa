@@ -40,7 +40,8 @@
 
   display: table-cell;
   vertical-align: middle;
-
+  position: relative;
+  left: 2vw;
   @content;
 }
 
@@ -251,8 +252,6 @@
     }
 
     @include topContainer($LG);
-    position: relative;
-    left: 2vw;
   }
 
   &__blogBlock {
@@ -275,7 +274,6 @@
     @include topContainer($LG);
 
     position: relative;
-    left: 3vw;
   }
 
   &__messageBlock {

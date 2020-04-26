@@ -1,3 +1,6 @@
+// foundation
+@import '../foundation/index';
+
 .l-content {
   &__blocks {
     background: $colorWhite;
@@ -18,7 +21,7 @@
     }
   }
 
-  &__blocks.is-show {
+  &__blocks {
     opacity: 1;
     top: 0;
     z-index: 1000;
