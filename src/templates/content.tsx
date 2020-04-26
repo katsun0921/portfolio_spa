@@ -5,6 +5,7 @@ import { TAB_TYPES } from '../actions/index'
 import PostContext from '../contexts/PostContext'
 import WorkList from './WorkList'
 import BlogList from './BlogList'
+import styled from 'styled-components'
 
 const ContentContext = React.createContext('')
 
@@ -22,7 +23,7 @@ const tabData = [
 interface TabsComponent_Props {
   currentTabType: string
   tabData: Array<{ text: string; type: string }>
-  changeTab: any // あとでmapのtab.typeエラーを調べる() => (event: React.MouseEvent<HTMLButtonElement>) => string
+  changeTab: any
 }
 
 type Items_Props = {
@@ -43,23 +44,65 @@ const NavTabs = ({
   changeTab,
 }: TabsComponent_Props) => {
   const clickShow = React.useContext(ContentContext)
+  const List = styled.li`
+    position: relative;
+    + .is-active .l-menuInline__list {
+      color: #fff;
+      background-color: #666;
+    }
+    &.l-menu__listStatus {
+      &:hover .l-menuInline__list,
+      &:focus .l-menuInline__list {
+        color: #fff;
+        background-color: #666;
+        padding-left: 26px;
+        &::before {
+          background: #4dd133;
+          border-radius: 50%;
+          content: '';
+          width: 7px;
+          height: 7px;
+          left: 9px;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        &::after {
+          background: #4dd133;
+          border-radius: 50%;
+          content: '';
+          width: 15px;
+          height: 15px;
+          left: 5px;
+          opacity: 0.3;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  `
   return (
     <nav className="l-menu__container">
       <ul className="l-menuInline">
-        <li>
+        <List className={`l-menu__listStatus`}>
           <MenuButton onClick={() => alert('modal')}>Resume</MenuButton>
-        </li>
+        </List>
         {tabData.map((tab) => (
-          <li
+          <List
             key={tab.type}
-            className={currentTabType === tab.type ? 'is-active' : ''}
+            className={
+              currentTabType === tab.type
+                ? 'l-menu__listStatus is-active'
+                : 'l-menu__listStatus'
+            }
           >
             <MenuButton onClick={() => changeTab(tab.type)}>
               {tab.text}
             </MenuButton>
-          </li>
+          </List>
         ))}
-        <li>
+        <List>
           <MenuButton
             onClick={() => {
               clickShow.clickShowContent(currentTabType)
@@ -68,7 +111,7 @@ const NavTabs = ({
           >
             <span className="fas fa-times" aria-hidden="true"></span>
           </MenuButton>
-        </li>
+        </List>
       </ul>
     </nav>
   )

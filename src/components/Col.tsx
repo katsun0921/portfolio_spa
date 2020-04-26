@@ -7,6 +7,6 @@ const ColSideStyle = styled.div`
   flex-wrap: wrap;
 `
 
-export const ColSide = ({ children }) => {
+export const ColSide: React.FC = ({ children }) => {
   return <ColSideStyle>{children}</ColSideStyle>
 }
