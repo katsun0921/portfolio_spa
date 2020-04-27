@@ -4,7 +4,7 @@ import Layout from 'components/Layout'
 import SEO from 'components/SEO'
 import 'scss/layout/index.scss'
 import 'scss/object/project/_top.scss'
-import Content from '../templates/Content'
+import Content from '../components/Content'
 import { TAB_TYPES } from '../actions/index'
 import PostContext from '../contexts/PostContext'
 
