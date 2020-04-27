@@ -1,10 +1,9 @@
 import React from 'react'
-
 import { useStaticQuery, graphql } from 'gatsby'
 
-import { LinkDetail } from '../components/Link'
-import { ColSide } from '../components/Col'
-import PostLayout from '../components/PostLayout'
+import { LinkDetail } from './Link'
+import { ColSide } from './Col'
+import PostLayout from './PostLayout'
 import 'scss/object/project/_blog.scss'
 
 const BlogList = () => {

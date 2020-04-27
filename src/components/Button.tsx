@@ -9,3 +9,9 @@ export const PrimaryButton: React.FC = ({ children, onClick }) => {
     </button>
   )
 }
+
+export const MenuButton: React.FC = ({ children, onClick }) => (
+  <button type="button" className="l-menuInline__list" onClick={onClick}>
+    {children}
+  </button>
+)

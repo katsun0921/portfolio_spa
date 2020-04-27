@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import PostLayout from '../components/PostLayout'
 import PostContext from '../contexts/PostContext'
