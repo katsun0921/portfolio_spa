@@ -29,6 +29,12 @@ module.exports = {
     },
     `gatsby-plugin-styled-components`,
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-74680718-2',
+      },
+    },
+    {
       resolve: 'gatsby-source-wordpress',
       options: {
         /*
