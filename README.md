@@ -8,9 +8,6 @@ Backlogを使用
 
 作業を行う際は、Backlog に課題をを作成する
 
-進行中の課題を[github project](https://github.com/katsun0921/portfolio_spa/projects)へ記載
-
-
 ## ブランチの命名規則
 
 - master
@@ -27,10 +24,6 @@ Backlogを使用
 - issue/issue 番号
   - master から分岐
   - 現在の公開のバグフィックス
-
-（※）プロジェクト番号は「<https://github.com/users/アカウント名/projects/1」の末尾にある番号この場合「1」>
-
-（※）column-番号の番号は Copy column link でコピーされた末尾の番号
 
 ## Lint ツール
 
