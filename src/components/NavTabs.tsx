@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import ContentContext from '../contexts/ContentContext'
 import { MenuButton } from './Button'
+import { ModalResume } from 'components/Modal'
 
 interface TabsComponent_Props {
   currentTabType: string
@@ -58,7 +59,7 @@ const NavTabs = ({
     <nav className="l-menu__container">
       <ul className="l-menuInline">
         <List className={`l-menu__listStatus`}>
-          <MenuButton onClick={() => alert('modal')}>Resume</MenuButton>
+          <ModalResume className={'l-menuInline__list'}>Resume</ModalResume>
         </List>
         {tabData.map((tab) => (
           <List
