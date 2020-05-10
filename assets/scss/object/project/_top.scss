@@ -28,6 +28,13 @@
 }
 
 @mixin topContainer($MQ) {
+
+  display: table-cell;
+  vertical-align: middle;
+  position: absolute;
+  left: 2vw;
+  @content;
+
   @if ($MQ <= 768px) {
     transform: rotate(0deg);
     position: relative;
@@ -37,12 +44,6 @@
   @else {
     transform: rotate(34deg);
   }
-
-  display: table-cell;
-  vertical-align: middle;
-  position: relative;
-  left: 2vw;
-  @content;
 }
 
 // selector
@@ -99,9 +100,7 @@
       padding: 0 0 30px;
     }
 
-    @include topContainer($LG);
-    position: relative;
-    top: 15%;
+    top: 35%;
     left: 32%;
   }
 

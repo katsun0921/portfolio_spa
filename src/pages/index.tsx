@@ -1,7 +1,8 @@
 import React from 'react'
 
 import Layout from 'components/Layout'
-import SEO from 'components/SEO'
+import SEO from 'components/Seo'
+import { ModalResume } from 'components/Modal'
 import 'scss/layout/index.scss'
 import 'scss/object/project/_top.scss'
 import Content from '../components/Content'
@@ -66,9 +67,11 @@ class IndexPage extends React.Component<IndexProps, showState> {
             >
               <h1 className={`${topClassName}__headingMain`}>
                 Katsumasa
+                <br />
                 <span className={`${topClassName}__headingMainUnder`}>
                   Sato
                 </span>
+                <br />
                 <span className={`${topClassName}__headingMain--sub`}>
                   WEB DEVELOPER
                 </span>
@@ -84,7 +87,7 @@ class IndexPage extends React.Component<IndexProps, showState> {
             </div>
           </section>
           <nav className={`${menuClassName}__blocks`} id="js-topMenu">
-            <button
+            <ModalResume
               className={`js-btnResume js-topBtn ${topClassName}__resumeBlock ${menuClassName}__block`}
             >
               <div className={`${topClassName}__resumeContainer`}>
@@ -94,7 +97,7 @@ class IndexPage extends React.Component<IndexProps, showState> {
                   Resume
                 </div>
               </div>
-            </button>
+            </ModalResume>
             <button
               onClick={() => this.clickShowContent(TAB_TYPES.WORK)}
               className={`js-topBtn ${topClassName}__workBlock ${menuClassName}__block`}

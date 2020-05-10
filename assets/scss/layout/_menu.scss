@@ -83,17 +83,23 @@
     @include MQ($MD) {
       font-size: 2rem;
       line-height: 2rem;
-      margin: 25px 0 25px 40px;
+      padding: 25px 0 25px 40px;
 
       &::before {
-        top: -10px !important;
+        top: 8px;
+        left: 20px !important;
+        top: 5px !important;
       }
 
       &::after {
         content: none !important;
       }
     }
+    @include MQ($LG) {
 
+    }
+    width: 100%;
+    text-align: left;
     color: $colorWhite;
     font-size: 2.8rem;
     font-weight: 600;
@@ -103,8 +109,8 @@
     &::before {
       font-size: 1.4rem;
       left: -20px;
+      top: -20px;
       position: absolute;
-      top: -40px;
       transition: all 0.5s ease;
     }
 
@@ -114,7 +120,7 @@
       height: 1px;
       left: -20px;
       position: absolute;
-      top: -10px;
+      top: 10px;
       transition: all 0.5s ease;
       width: 70px;
     }
