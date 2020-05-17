@@ -42,11 +42,20 @@ exports.createPages = async ({ graphql, actions }) => {
         allWordpressPost {
           edges {
             node {
+              categories {
+                name
+              }
               id
+              excerpt
+              wordpress_id
               path
               status
               template
               format
+              title
+              content
+              date(formatString: "Do MMM YYYY")
+              slug
             }
           }
         }
@@ -60,18 +69,15 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Access query results via object destructuring
-  const {
-    allWordpressSiteMetadata,
-    allWordpressPage,
-    allWordpressPost,
-  } = result.data
+  const { allWordpressPage, allWordpressPost } = result.data
 
   // Create Page pages.
-  const pageTemplate = path.resolve(`./src/templates/page.tsx`)
+  // const pageTemplate = path.resolve(`./src/templates/page.tsx`)
   // We want to create a detailed page for each page node.
   // The path field contains the relative original WordPress link
   // and we use it for the slug to preserve url structure.
   // The Page ID is prefixed with 'PAGE_'
+  /*
   allWordpressPage.edges.forEach((edge) => {
     // Gatsby uses Redux to manage its internal state.
     // Plugins and sites can use functions like "createPage"
@@ -88,8 +94,9 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+  */
 
-  const postTemplate = path.resolve(`./src/templates/post.tsx`)
+  const postTemplate = path.resolve(`./src/pages/index.tsx`)
   // We want to create a detailed page for each post node.
   // The path field stems from the original WordPress link
   // and we use it for the slug to preserve url structure.
@@ -99,7 +106,8 @@ exports.createPages = async ({ graphql, actions }) => {
       path: edge.node.path,
       component: slash(postTemplate),
       context: {
-        id: edge.node.id,
+        node: edge.node,
+        post: true,
       },
     })
   })
@@ -110,12 +118,17 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
+        images: path.resolve(__dirname, 'assets/images'),
+        scss: path.resolve(__dirname, 'assets/scss'),
+        actions: path.resolve(__dirname, 'src/actions'),
         components: path.resolve(__dirname, 'src/components'),
         styles: path.resolve(__dirname, 'src/styles'),
         pages: path.resolve(__dirname, 'src/pages'),
         templates: path.resolve(__dirname, 'src/templates'),
-        images: path.resolve(__dirname, 'src/images'),
       },
+    },
+    node: {
+      fs: 'empty',
     },
   })
 }

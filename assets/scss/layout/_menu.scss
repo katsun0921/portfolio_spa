@@ -1,0 +1,228 @@
+// foundation
+@import '../foundation/index';
+
+.l-menu {
+  &__blocks {
+    @include MQ ($MD) {
+      position: static;
+      transform: translateY(0);
+    }
+    position: absolute;
+    transition: all 0.5s;
+    top: 41%;
+    left: 11vw;
+    transform: translateY(-50%);
+  }
+
+  &__blocks.is-none {
+    display: none;
+  }
+
+  &__container {
+    align-items: center;
+    background: $colorMenu;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 40px;
+    justify-content: flex-end;
+    position: fixed;
+    right: 0;
+    transition: all 0.5s;
+    width: 70%;
+    z-index: 1;
+
+    &.is-show {
+      top: 0;
+    }
+
+    &.is-close {
+      display: block;
+      text-align: center;
+    }
+
+    @include MQ($MD) {
+      height: auto;
+      width: 100%;
+    }
+
+    &.is-none {
+      display: none;
+    }
+  }
+
+  &__status {
+    color: $colorGrayDark;
+    padding-left: 45px;
+
+    &::before {
+      background: $colorMenuCaption;
+      border-radius: 50%;
+      content: '';
+      height: 7px;
+      left: 25px;
+      position: absolute;
+      top: 17px;
+      width: 7px;
+    }
+
+    &::after {
+      background: $colorMenuCaption;
+      border-radius: 50%;
+      content: '';
+      height: 15px;
+      left: 21px;
+      opacity: 0.3;
+      position: absolute;
+      top: 13px;
+      width: 15px;
+    }
+  }
+
+  &__subHeading {
+    @include MQ($MD) {
+      font-size: 2rem;
+      line-height: 2rem;
+      padding: 25px 0 25px 40px;
+
+      &::before {
+        top: 8px;
+        left: 20px !important;
+        top: 5px !important;
+      }
+
+      &::after {
+        content: none !important;
+      }
+    }
+    @include MQ($LG) {
+
+    }
+    width: 100%;
+    text-align: left;
+    color: $colorWhite;
+    font-size: 2.8rem;
+    font-weight: 600;
+    position: relative;
+    transition: all 1s ease-out;
+
+    &::before {
+      font-size: 1.4rem;
+      left: -20px;
+      top: -20px;
+      position: absolute;
+      transition: all 0.5s ease;
+    }
+
+    &::after {
+      background: $colorWhite;
+      content: '';
+      height: 1px;
+      left: -20px;
+      position: absolute;
+      top: 10px;
+      transition: all 0.5s ease;
+      width: 70px;
+    }
+  }
+
+  &__block {
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+      border: 15px solid rgba(255, 255, 255, 0.1);
+
+      .c-menu__itemH2::before {
+        left: -40px;
+        top: -20px;
+      }
+
+      .c-menu__itemH2::after {
+        left: -40px;
+        top: 12px;
+      }
+    }
+
+    @include MQ($MD) {
+      &:hover {
+        background: rgba(0, 0, 0, 0.1);
+        border: none;
+      }
+    }
+  }
+
+  &--resume::before {
+    content: '01';
+  }
+
+  &--work::before {
+    content: '02';
+  }
+
+  &--blog::before {
+    content: '03';
+  }
+}
+
+// Menu Inline
+.l-menuInline {
+  display: flex;
+  margin-bottom: 0;
+  margin-right: 30px;
+  margin-top: 0;
+
+  .is-close & {
+    display: inline-block;
+  }
+
+  &__list {
+    color: $colorGrayDarkLittle;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    line-height: 40px;
+    margin-top: -5px;
+    padding: 0 15px;
+
+    &.is-active {
+      color: $colorGrayDark;
+      cursor: text;
+    }
+  }
+
+  &__containerStyle1 {
+    background: transparent;
+
+    &__list {
+      color: $colorWhite;
+      font-weight: 400;
+      line-height: 70px;
+    }
+  }
+
+  &__style {
+    background-color: $colorMenu;
+  }
+
+  &__styleList {
+    color: $colorGrayDarkLittle;
+    font-size: 1.4rem;
+    line-height: 40px;
+  }
+}
+
+// Menu Sidebar
+.l-menuSidebar {
+  background: $colorBlack;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  width: 20%;
+
+  &__hide {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+  }
+}

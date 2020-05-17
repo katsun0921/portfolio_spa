@@ -1,0 +1,52 @@
+@import '../../foundation/index';
+
+.c-btn {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  overflow: hidden;
+  padding: 12px 28px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.3s;
+
+  &--block {
+    background-color: $colorGrayDark;
+    border: 2px solid transparent;
+    color: $colorWhite;
+    width: 30vw;
+    max-width: 250px;
+    min-width: 130px;
+
+    &:hover {
+      background-color: $colorWhite;
+      border: 2px solid $colorGrayDarkLittle;
+      color: $colorGrayDarkLittle;
+      transform: scale(1.01);
+    }
+  }
+
+  &:hover {
+    letter-spacing: 3px;
+  }
+
+  &:focus {
+    box-shadow: none;
+    color: $colorWhite;
+    outline: none;
+  }
+
+  &__social {
+    &BtnList {
+      display: block;
+      height: 40px;
+      width: 40px;
+
+      &:first-child {
+        margin-left: 10px;
+      }
+    }
+  }
+}
