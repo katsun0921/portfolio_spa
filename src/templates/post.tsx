@@ -1,6 +1,6 @@
 import React from 'react'
 
-import PostLayout from '../components/PostLayout'
+import PostLayout from '../components/LayoutPost'
 import PostContext from '../contexts/PostContext'
 import { ColSide } from '../components/Col'
 import { PrimaryButton } from '../components/Button'
