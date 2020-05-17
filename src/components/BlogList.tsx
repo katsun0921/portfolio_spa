@@ -1,6 +1,6 @@
 import React from 'react'
 import ApolloClient, { gql } from 'apollo-boost'
-import { ApolloProvider, useQuery, useMutation } from '@apollo/react-hooks'
+import { ApolloProvider, useQuery } from '@apollo/react-hooks'
 
 import { LinkDetail } from './Link'
 import { ColSide } from './Col'
@@ -9,7 +9,7 @@ import 'scss/object/project/_blog.scss'
 import { CATEGORY_NAME } from '../actions/index'
 
 const client = new ApolloClient({
-  uri: 'https://portfolio-ks.info/graphql',
+  uri: `https://${process.env.GATSBY_WORDPRESS_URL}/graphql`,
 })
 
 export const QUERY_BLOGS = gql`

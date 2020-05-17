@@ -1,6 +1,8 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
-    title: `portfolio-ks.info with Gatsby Default Starter from Wordpress`,
+    title: `佐藤功理(katsumasa-sato)のポートフォリオサイト`,
     description: `Wordpress wp-jsonからapiを取得`,
     author: `katsumasa-sato`,
     lang: `ja`,
@@ -24,7 +26,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `${__dirname}/assets/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `${__dirname}/assets/images/icon-logo.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-styled-components`,
@@ -41,7 +43,7 @@ module.exports = {
          * The base URL of the WordPress site without the trailingslash and the protocol. This is required.
          * Example : 'demo.wp-api.org' or 'www.example-site.com'
          */
-        baseUrl: 'portfolio-ks.info',
+        baseUrl: process.env.GATSBY_WORDPRESS_URL,
         // The protocol. This can be http or https.
         protocol: 'https',
         // The rest api route prefix that your WordPress site is using.
