@@ -127,5 +127,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         templates: path.resolve(__dirname, 'src/templates'),
       },
     },
+    node: {
+      fs: 'empty',
+    },
   })
 }
