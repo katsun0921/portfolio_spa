@@ -1,8 +1,8 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import PostLayout from './PostLayout'
 import 'scss/object/project/_work.scss'
+import LayoutPost from './LayoutPost'
 
 export default () => {
   const workClassName = 'p-work'
@@ -28,7 +28,7 @@ export default () => {
     }
   `)
   return (
-    <PostLayout>
+    <LayoutPost>
       <h2 className="c-heading__blockMain">Work</h2>
       <section className={`${workClassName}__container`}>
         {data.allWordpressPost.edges.map((edge: any) => {
@@ -63,6 +63,6 @@ export default () => {
           )
         })}
       </section>
-    </PostLayout>
+    </LayoutPost>
   )
 }
