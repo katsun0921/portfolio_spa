@@ -29,16 +29,6 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allWordpressPage {
-          edges {
-            node {
-              id
-              path
-              status
-              template
-            }
-          }
-        }
         allWordpressPost {
           edges {
             node {

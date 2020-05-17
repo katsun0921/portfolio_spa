@@ -1,16 +1,12 @@
 import React from 'react'
-import ApolloClient, { gql } from 'apollo-boost'
+import { gql } from 'apollo-boost'
 import { ApolloProvider, useQuery } from '@apollo/react-hooks'
-
+import { WrapRootElement } from '../apollo/WrapRootElement'
 import { LinkDetail } from './Link'
 import { ColSide } from './Col'
 import PostLayout from './PostLayout'
 import 'scss/object/project/_blog.scss'
 import { CATEGORY_NAME } from '../actions/index'
-
-const client = new ApolloClient({
-  uri: `https://${process.env.GATSBY_WORDPRESS_URL}/graphql`,
-})
 
 export const QUERY_BLOGS = gql`
   query blogPosts(
@@ -171,10 +167,10 @@ const Posts = () => {
 const BlogList = () => {
   return (
     <PostLayout>
-      <ApolloProvider client={client}>
+      <WrapRootElement client={client}>
         <h2 className="c-heading__blockMain">{CATEGORY_NAME.BLOG}</h2>
         <Posts />
-      </ApolloProvider>
+      </WrapRootElement>
     </PostLayout>
   )
 }
