@@ -1,10 +1,10 @@
 import React from 'react'
 import { gql } from 'apollo-boost'
-import { ApolloProvider, useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/react-hooks'
 import { WrapRootElement } from '../apollo/WrapRootElement'
 import { LinkDetail } from './Link'
 import { ColSide } from './Col'
-import PostLayout from './PostLayout'
+import LayoutPost from './LayoutPost'
 import 'scss/object/project/_blog.scss'
 import { CATEGORY_NAME } from '../actions/index'
 
@@ -166,12 +166,12 @@ const Posts = () => {
 
 const BlogList = () => {
   return (
-    <PostLayout>
+    <LayoutPost>
       <WrapRootElement client={client}>
         <h2 className="c-heading__blockMain">{CATEGORY_NAME.BLOG}</h2>
         <Posts />
       </WrapRootElement>
-    </PostLayout>
+    </LayoutPost>
   )
 }
 
