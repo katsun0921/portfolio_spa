@@ -1,12 +1,12 @@
 import React from 'react'
 import { gql } from 'apollo-boost'
-import { useQuery } from '@apollo/react-hooks'
-import { WrapRootElement } from '../apollo/WrapRootElement'
+import { ApolloProvider, useQuery } from '@apollo/react-hooks'
 import { LinkDetail } from './Link'
 import { ColSide } from './Col'
 import LayoutPost from './LayoutPost'
 import 'scss/object/project/_blog.scss'
 import { CATEGORY_NAME } from '../actions/index'
+import { client } from '../apollo/client'
 
 export const QUERY_BLOGS = gql`
   query blogPosts(
@@ -73,11 +73,13 @@ const Posts = () => {
         // 100文字以上は・・・にする
         const fullText = node.content
         const omitText = fullText
-          .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
-          .substring(0, 100)
+          ? fullText
+              .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
+              .substring(0, 100)
+          : ''
         const remainText = fullText
-          .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
-          .substring(100)
+          ? fullText.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '').substring(100)
+          : ''
         if (remainText !== '') {
           node.content = omitText + '...'
         }
@@ -167,10 +169,10 @@ const Posts = () => {
 const BlogList = () => {
   return (
     <LayoutPost>
-      <WrapRootElement client={client}>
+      <ApolloProvider client={client}>
         <h2 className="c-heading__blockMain">{CATEGORY_NAME.BLOG}</h2>
         <Posts />
-      </WrapRootElement>
+      </ApolloProvider>
     </LayoutPost>
   )
 }
