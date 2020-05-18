@@ -4,9 +4,9 @@ wordpress から REST API を受け取り React で SPA にする
 
 ## プロジェクト管理
 
-[github project](https://github.com/katsun0921/portfolio_spa/projects)
+Backlogを使用
 
-作業を行う際は、github に Project または issue を作成する
+作業を行う際は、Backlog に課題をを作成する
 
 ## ブランチの命名規則
 
@@ -24,10 +24,6 @@ wordpress から REST API を受け取り React で SPA にする
 - issue/issue 番号
   - master から分岐
   - 現在の公開のバグフィックス
-
-（※）プロジェクト番号は「<https://github.com/users/アカウント名/projects/1」の末尾にある番号この場合「1」>
-
-（※）column-番号の番号は Copy column link でコピーされた末尾の番号
 
 ## Lint ツール
 
