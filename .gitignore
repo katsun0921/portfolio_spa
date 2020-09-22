@@ -43,3 +43,6 @@ typings/
 
 # public files
 public/
+
+# package
+package-lock.json
